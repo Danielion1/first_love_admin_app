@@ -7,7 +7,7 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 
 export default function Widget({type}) {
     let data;
-    const number = 1000;
+    //const number = 1000;
     const percentageDiff = 20;
 
     switch(type){
@@ -15,6 +15,7 @@ export default function Widget({type}) {
             data={
                 title:'IMPARTATION',
                 attendance: true,
+                participate: 850,
                 link:'View all branches attendance',
                 icon:(<ConnectWithoutContactIcon className="icon" style={{color:'crimson', backgroundColor:'rgba(255, 0, 0, 0.2)' }}/>),
 
@@ -24,6 +25,7 @@ export default function Widget({type}) {
                 data={
                     title:'FELLOWSHIP',
                     attendance: true,
+                    participate: 900,
                     link:'View all branches attendance',
                     icon: (<EscalatorWarningIcon className='icon' style={{color:'blue', backgroundColor:'rgba(218, 165, 32, 0.2)' }}/>),
     
@@ -33,6 +35,7 @@ export default function Widget({type}) {
                     data={
                         title:'FLOW PRAYER',
                         attendance: true,
+                        participate: 600,
                         link:'View all branches attendance',
                         icon: (<SettingsAccessibilityIcon className='icon' 
                         style={{color:'green', backgroundColor:'rgba(187, 352, 32, 0.2)' }}/>),
@@ -44,6 +47,7 @@ export default function Widget({type}) {
                         data={
                             title:'FLOW UNITY',
                             attendance: true,
+                            participate: 950,
                             link:'View all branches attendance',
                             icon: (<PeopleOutlineIcon className='icon' style={{color:'orange', backgroundColor:'rgba(200, 123, 16, 0.2)' }}/>),
             
@@ -56,7 +60,7 @@ export default function Widget({type}) {
     <div className='widget'>
         <div className="left">
             <span className='title'>{data.title}</span>
-            <span className='attendance'>{data.attendance} {number}</span>
+            <span className='attendance'>{data.participate}</span>
             <span className='link'>{data.link}</span>
         </div>
         <div className="right">

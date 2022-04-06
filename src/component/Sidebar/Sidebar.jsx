@@ -1,38 +1,44 @@
 import './sidebar.scss'
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PersonIcon from '@mui/icons-material/Person';
+// import PersonIcon from '@mui/icons-material/Person';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import GroupIcon from '@mui/icons-material/Group';
 import ChurchIcon from '@mui/icons-material/Church';
 import FaceIcon from '@mui/icons-material/Face';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { Link } from 'react-router-dom';
 export default function Sidebar() {
   return (
     <div className='sidebar'>
       <div className="top">
+        <Link to="/" style={{textDecoration: "none"}}>
           <span className='logo'>FLCNA-ADMIN</span>
+        </Link>
       </div>
       <hr/>
       <div className="center">
           <ul>
+          <Link to="/" style={{textDecoration: "none"}}>
               <p className='title'>Main</p>
               <li>
                 <DashboardIcon className='icon'/>
                 <span>Dashboard</span>
               </li>
+              </Link>
+
+              <Link to="/users" style={{textDecoration: "none"}}>
               <p className='title'>List</p>
               <li>
-                <PersonIcon className='icon'/>
-                <span>Users</span>
+                <GroupIcon className='icon'/>
+                <span>GSOs</span>
               </li>
+              </Link>
+              <Link to="/pastors" style={{textDecoration: "none"}}>
               <li>
                 <GroupIcon className='icon'/>
                 <span>Pastors</span>
               </li>
-              <li>
-                 <GroupIcon className='icon'/>
-                  <span>GSOs</span>
-              </li>
+              </Link>
               <li>
                 <DirectionsBusIcon className='icon'/>
                   <span>Bacenter Leaders</span>

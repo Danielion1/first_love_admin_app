@@ -1,4 +1,5 @@
-import Table from '../../component/table/Table'
+import Tables from '../../component/tables/Tables'
+// import Table from '../../component/table/Table'
 import Chart from '../../component/chart/Chart'
 import Featured from '../../component/featured/Featured'
 import Navbar from '../../component/navbar/Navbar'
@@ -19,11 +20,13 @@ export default function home() {
         </div>
         <div className="charts">
           <Featured/>
-          <Chart/>
+          <Chart title ="Gathering Service Attendance" aspect={2/1}/>
         </div>
         <div className="listContainer">
           <div className="listTitle">Pastors and GSOs</div>
-          <Table/>
+          {/* <Tables/> */}
+          {/* <Table/> */}
+          <Tables/>
         </div>
       </div>
     </div>
