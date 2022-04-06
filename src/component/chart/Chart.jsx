@@ -1,5 +1,5 @@
 import './chart.scss'
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import { scaleOrdinal } from 'd3-scale';
 import { schemeCategory10 } from 'd3-scale-chromatic';
 import PropTypes from 'prop-types';
@@ -10,75 +10,51 @@ const colors = scaleOrdinal(schemeCategory10).range();
 const data = [
     {
       name: 'JAN',
-      uv: 4000,
-      female: 2400,
-      male: 2400,
+      num: 4000,
     },
     {
       name: 'FEB',
-      uv: 3000,
-      female: 1398,
-      male: 2210,
+      num: 3000,
     },
     {
       name: 'MAR',
-      uv: 2000,
-      female: 9800,
-      male: 2290,
+      num: 2000,
     },
     {
       name: 'APR',
-      uv: 2780,
-      female: 3908,
-      male: 2000,
+      num: 2780,
     },
     {
       name: 'MAY',
-      uv: 1890,
-      female: 4800,
-      male: 2181,
+      num: 1890,
     },
     {
       name: 'JUN',
-      uv: 2390,
-      female: 3800,
-      male: 2500,
+      num: 2390,
     },
     {
       name: 'JUL',
-      uv: 3490,
-      female: 4300,
-      male: 2100,
+      num: 3490,
     },
     {
         name: 'AUG',
-        uv: 1890,
-        female: 4800,
-        male: 2181,
+        num: 1890,
       },
       {
         name: 'SEP',
-        uv: 2390,
-        female: 3800,
-        male: 2500,
+        num: 2390,
       },
       {
         name: 'OCT',
-        uv: 3490,
-        female: 6500,
-        male: 2100,
+        num: 3490,
       },
       {
         name: 'NOV',
-        uv: 4000,
-        female: 7000,
-        male: 2400,
+        num: 4000,
       },
       {
         name: 'DEC',
-        uv: 3000,
-        female: 8000,
-        male: 2210,
+        num: 5000,
       },
   ];
 
@@ -100,14 +76,14 @@ TriangleBar.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
 };
-export default function Chart() {
+export default function Chart({aspect, title}) {
   return (
     <div className='chart'>
-        <div className="title">Gathering Service Attendance</div>
-       <ResponsiveContainer width="100%" aspect={2/1}>
+        <div className="title">{title}</div>
+       <ResponsiveContainer width="100%" aspect={aspect}>
         <BarChart
           width={500}
-          height={300}
+          height={500}
           data={data}
           margin={{
             top: 20,
@@ -119,7 +95,7 @@ export default function Chart() {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
-          <Bar dataKey="female" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+          <Bar dataKey="num" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={colors[index % 20]} />
             ))}
