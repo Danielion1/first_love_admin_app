@@ -5,6 +5,8 @@ import Featured from '../../component/featured/Featured'
 import Navbar from '../../component/navbar/Navbar'
 import Sidebar from '../../component/Sidebar/Sidebar'
 import Widget from '../../component/widget/Widget'
+import SubmitForm from '../../pages/submitForm/SubmitForm'
+
 import './home.scss'
 export default function home() {
   return (
@@ -27,6 +29,7 @@ export default function home() {
           {/* <Tables/> */}
           {/* <Table/> */}
           <Tables/>
+          <SubmitForm/>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export default function Featured() {
                 {/* <CircularProgressbar className='circularProgressBar' value={45} text ={"45%"} strokeWidth={7}/> */}
             </div>
             <p className='title'>Percentage close to target</p>
-            <p className='attendance'>1340</p>
+            <p className='attendance'>1700</p>
             <div className="summary">
                 <div className="item">
                     <div className="itemTitle">Target</div>

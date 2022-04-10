@@ -3,13 +3,13 @@ import "./chart.scss";
 import { PieChart, Pie, Cell } from "recharts";
 
 const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-  { name: "Group E", value: 100 },
-  { name: "Group F", value: 250 },
-  { name: "Group G", value: 250 }
+  { name: "NE", value: 500 },
+  { name: "MW", value: 300 },
+  { name: "SE", value: 300 },
+  { name: "SW", value: 200 },
+  { name: "WC", value: 100 },
+  { name: "DMV", value: 250 },
+  { name: "CAN", value: 250 }
 ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#C02BB8", "#D02332", "#C0D279"];
@@ -48,7 +48,7 @@ export default function App() {
         cx={200}
         cy={200}
         labelLine={false}
-        label={renderCustomizedLabel}
+        label="f"
         outerRadius={130}
         fill="#8884d8"
         dataKey="value"
