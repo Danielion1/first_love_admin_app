@@ -23,7 +23,7 @@ export default function Featured() {
                 {/* <CircularProgressbar className='circularProgressBar' value={45} text ={"45%"} strokeWidth={7}/> */}
             </div>
             <p className='title'>Percentage close to target</p>
-            <p className='attendance'>1340</p>
+            <p className='attendance'>1700</p>
             <div className="summary">
                 <div className="item">
                     <div className="itemTitle">Target</div>
@@ -55,9 +55,10 @@ export default function Featured() {
             <button className='piecolor' style={{ background: "#0088FE", color: "#FFFFFF", border:"none"}}>NE</button>
             <button className='piecolor' style={{ background: "#00C49F", color: "#FFFFFF", border:"none"}}>MW</button>
             <button className='piecolor'  style={{ background: "#FFBB28", color: "#FFFFFF", border:"none"}}>SE</button>
-            <button className='piecolor' style={{ background: "#FF8042", color: "#FFFFFF", border:"none"}}>NE</button>
-            <button className='piecolor' style={{ background: "#C02BB8", color: "#FFFFFF", border:"none"}}>NE</button>
-            <button className='piecolor' style={{ background: "#D02332", color: "#FFFFFF", border:"none"}}>NE</button>
+            <button className='piecolor' style={{ background: "#FF8042", color: "#FFFFFF", border:"none"}}>SW</button>
+            <button className='piecolor' style={{ background: "#C02BB8", color: "#FFFFFF", border:"none"}}>WC</button>
+            <button className='piecolor' style={{ background: "#D02332", color: "#FFFFFF", border:"none"}}>DMV</button>
+            <button className='piecolor' style={{ background: "#C0D279", color: "#FFFFFF", border:"none"}}>CAN</button>
             </div>
         </div>
       

@@ -7,6 +7,7 @@ import ChurchIcon from '@mui/icons-material/Church';
 import FaceIcon from '@mui/icons-material/Face';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Link } from 'react-router-dom';
+import SubmitForm from '../../pages/submitForm/SubmitForm'
 export default function Sidebar() {
   return (
     <div className='sidebar'>
