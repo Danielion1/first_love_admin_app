@@ -3,7 +3,19 @@ import Sidebar from '../../component/Sidebar/Sidebar';
 import Navbar from '../../component/navbar/Navbar';
 import { DriveFolderUploadOutlined } from '@mui/icons-material';
 import { useState } from 'react';
+import { doc, setDoc } from "firebase/firestore"; 
+//import { async } from '@firebase/util';
+import { db } from '../../firebase';
 
+const handleAdd = async(e)=>{
+  e.preventDefault()
+  // Add a new document in collection "cities"
+    await setDoc(doc(db, "cities", "LA"), {
+    name: "Los Angeles",
+    state: "CA",
+    country: "USA"
+});
+}
 export default function New({inputs, title}) {
   const [file, setFile] = useState("");
   return (
@@ -21,7 +33,7 @@ export default function New({inputs, title}) {
             } alt="" />
           </div>
           <div className='right'>
-            <form action="form">
+            <form onSubmit={handleAdd} action="form">
             <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlined className='icon'/>
@@ -35,7 +47,7 @@ export default function New({inputs, title}) {
                 <input type={input.type}  placeholder={input.placeholder}/>
               </div>
               ))}
-              <button>Send</button>
+              <button type='submit'>Send</button>
               
 
             </form>

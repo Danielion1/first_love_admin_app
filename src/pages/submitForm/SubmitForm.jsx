@@ -9,10 +9,14 @@ const SubmitForm = () => {
     const [formData, setFormData] = useState({
         date: '',
         gathering: '',
-        email: '',
-        profession: '',
-        citizen: false,
-        graduate: false
+        impartationservice:'',
+        attendance: '',
+        zoomattendance: '',
+        tithers: '',
+        gatheringservice: '',
+        flowprayer:'',
+        flowunity:'',
+        other:''
 
     });
     const[feedback, setFeedback] = useState('');
@@ -28,15 +32,14 @@ const SubmitForm = () => {
 
   
     const validate = formData =>{
-        const {date, email, gathering, profession, citizen, graduate} = formData;
+        const {date, attendance, gathering, zoomattendance, tithers, gatheringservice} = formData;
         const errors = {};
 
-        if(!email) errors.email ="Email cannot be blank";
+        if(!attendance) errors.email ="Attendance cannot be blank";
         if(!date) errors.email ="date cannot be blank";
         if(!gathering) errors.email ="Branch cannot be blank";
-        if(!profession) errors.email ="profession cannot be blank";
-        if(!citizen) errors.email ="citizen cannot be blank";
-        if(!graduate) errors.email ="graduate cannot be blank";
+        if(zoomattendance) errors.email ="Zoom Attendance cannot be blank";
+        if(tithers) errors.email ="tithers cannot be blank";
 
         return errors;
     }
@@ -50,26 +53,30 @@ const SubmitForm = () => {
             setFormData({
                 date: '',
                 gathering:'',
-                email: '',
-                profession: '',
-                citizen: false,
-                graduate: false
+                impartationservice:'',
+                attendance: '',
+                zoomattendance: '',
+                tithers: '',
+                gatheringservice: '',
+                flowprayer:'',
+                flowunity:'',
+                other:''
             });
             setFeedback('You data has been submitted.');
         }
 
     }
   return (
-    <div className="register container">
+    <div className="register-container">
     <form className="card-panel" onSubmit={handFormSubmission}>
         {Object.values(errors).map(error=>(
             <h8 key={error} className="center red-text">{error}</h8>
         ))}
-        <h3 className="center pink-text">Submit Service Data</h3>
+        {/* <h3 className="center pink-text">Submit Service Data</h3>
         <h2 className="center deep-purple-text">{formData.date}</h2>
         <h2 className="center deep-purple-text">{formData.gathering}</h2>
-        <h2 className="center deep-purple-text">{formData.email}</h2>
-        <h2 className="center deep-purple-text">{feedback}</h2>
+        <h2 className="center deep-purple-text">{formData.attendance}</h2>
+        <h2 className="center deep-purple-text">{feedback}</h2> */}
 
         <div className="field">
             <label htmlFor="date" name="date">Date</label>
@@ -107,32 +114,50 @@ const SubmitForm = () => {
             <legend>Select your service method</legend>
 
         <div className="field">
-            <input type="checkbox" name="citizen" className="filled-in"
+            <input type="checkbox" name="gatheringservice" className="filled-in"
             onChange={handleChange} 
-            checked={formData.citizen}/>
+            checked={formData.gatheringservice}/>
             <span>Gathering Service</span>
         </div>
         <div className="field">
-            <input type="checkbox" name="graduate" className="filled-in"
+            <input type="checkbox" name="impartationservice" className="filled-in"
             onChange={handleChange} 
-            checked={formData.graduate}/>
+            checked={formData.impartationservice}/>
+            <span>Impartation Service</span>
+        </div>
+        <div className="field">
+            <input type="checkbox" name="flowprayer" className="filled-in"
+            onChange={handleChange} 
+            checked={formData.flowprayer}/>
             <span>Flow Prayers</span>
         </div>
         <div className="field">
-            <input type="checkbox" name="pra" className="filled-in"
+            <input type="checkbox" name="flowunity" className="filled-in"
             onChange={handleChange} 
-            checked={formData.graduate}/>
+            checked={formData.flowunity}/>
             <span>Flow Unity</span>
         </div>
         <div className="field">
-            <input type="checkbox" name="nlo" className="filled-in"
+            <input type="checkbox" name="other" className="filled-in"
             onChange={handleChange} 
-            checked={formData.graduate}/>
+            checked={formData.other}/>
             <span>Others</span>
         </div>
         </fieldset>
+        <div className="field">
+            <label htmlFor="text">Attendance</label>
+            <input type="text" name="attendance" id="attendance" placeholder="Enter Attendance" value={formData.attendance} onChange={handleChange}/>
+        </div>
+        <div className="field">
+            <label htmlFor="text">Zoom Attendance</label>
+            <input type="text" name="zoomattendance" id="zoomattendance" placeholder="Enter Zoom Attendance" value={formData.zoomattendance} onChange={handleChange}/>
+        </div>
+        <div className="field">
+            <label htmlFor="text">Number Tithers</label>
+            <input type="text" name="tithers" id="tithers" placeholder="Enter Number Tithers" value={formData.tithers} onChange={handleChange}/>
+        </div>
         <div className="field center">
-            <button className="btn pink">Submit</button>
+            <button className="btn-pink">Submit</button>
 
         </div>
     </form>
