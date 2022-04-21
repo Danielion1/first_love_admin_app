@@ -5,15 +5,14 @@ const columns = [
   { field: 'id', headerName: 'ID', width: 70},
   { field: 'firstName', headerName: 'First Name', width: 130 },
   { field: 'lastName', headerName: 'Last Name', width: 130 },
-  { field: 'gatheringService', headerName: 'Branch', width: 130 },
+  { field: 'branch', headerName: 'Branch', width: 150 },
 
 
-  {
-    field: 'gatheringServiceAttd',
-    headerName: 'Gathering Attendance',
-    type: 'number',
-    width: 200,
-  },
+  {field: 'gatheringAttd', headerName: 'Gathering', type: 'number',width: 110},
+  {field: 'impartationAttd', headerName: 'Impartation', type: 'number',width: 110},
+  {field: 'flowPrayerAttd', headerName: 'Flow Prayer', type: 'number',width: 110},
+  {field: 'tithers', headerName: 'Tithers', type: 'number',width: 110},
+
 
   {
     field: 'date',
@@ -26,25 +25,18 @@ const columns = [
 ];
 
 const rows = [
-  {
-    id: 1,
-    lastName: 'Daniel',
-    firstName: 'Odi',
-    gatheringService: 'Grand Rapids',
-    gatheringServiceAttd: 35,
-    date:'03-23-2021'
-},
-  { id: 2, lastName: 'Mathew', firstName: 'Jon',gatheringService: 'Grand Rapids', gatheringServiceAttd: 40, date:'03-23-2021' },
-  { id: 3, lastName: 'Henry', firstName: 'frank', gatheringService: 'Grand Rapids', gatheringServiceAttd: 34,  date:'03-23-2021' },
-  { id: 4, lastName: 'Erica', firstName: 'Mark', gatheringService: 'Grand Rapids', gatheringServiceAttd: 56,  date:'03-26-2021' },
-  { id: 5, lastName: 'Snadra', firstName: 'Hillary', gatheringService: 'Grand Rapids',gatheringServiceAttd: 53,  date:'03-25-2021'},
-  { id: 6, lastName: 'Nana', firstName: 'Ama', gatheringService: 'Grand Rapids',gatheringServiceAttd: 24,  date:'03-23-2021'},
-  { id: 7, lastName: 'Pascal', firstName: 'Timothy', gatheringService: 'Grand Rapids',gatheringServiceAttd: 53,  date:'03-23-2021' },
-  { id: 8, lastName: 'Snow', firstName: 'Jon', gatheringService: 'Grand Rapids',gatheringServiceAttd: 403,  date:'03-23-2021' },
-  { id: 9, lastName: 'Snow', firstName: 'Jon', gatheringService: 'Grand Rapids',gatheringServiceAttd: 33,  date:'03-23-2021' },
-  { id: 10, lastName: 'Snow', firstName: 'Jon', gatheringService: 'Grand Rapids',gatheringServiceAttd: 66,  date:'03-23-2021' },
-  { id: 11, lastName: 'Snow', firstName: 'Jon', gatheringService: 'Grand Rapids',gatheringServiceAttd: 908,  date:'03-23-2021' },
-  { id: 12, lastName: 'Snow', firstName: 'Jon', gatheringService: 'Grand Rapids',gatheringServiceAttd: 876,  date:'03-23-2021'},
+  {id: 1, lastName: 'Daniel', firstName: 'Odi', branch: 'Grand Rapids', gatheringAttd: 35, impartationAttd: 50,flowPrayerAttd:50, tithers:100, date:'03-23-2021'},
+  { id: 2, lastName: 'Mathew', firstName: 'Jon',branch: 'Grand Rapids', gatheringAttd: 40, impartationAttd: 50,flowPrayerAttd:50, tithers:100, date:'03-23-2021' },
+  { id: 3, lastName: 'Henry', firstName: 'frank', branch: 'Grand Rapids', gatheringAttd: 34, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021' },
+  { id: 4, lastName: 'Erica', firstName: 'Mark', branch: 'Grand Rapids', gatheringAttd: 56, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-26-2021' },
+  { id: 5, lastName: 'Snadra', firstName: 'Hillary', branch: 'Grand Rapids',gatheringAttd: 53, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-25-2021'},
+  { id: 6, lastName: 'Nana', firstName: 'Ama', branch: 'Grand Rapids',gatheringAttd: 24, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021'},
+  { id: 7, lastName: 'Pascal', firstName: 'Timothy', branch: 'Grand Rapids',gatheringAttd: 53, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021' },
+  { id: 8, lastName: 'Snow', firstName: 'Jon', branch: 'Grand Rapids',gatheringAttd: 403, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021' },
+  { id: 9, lastName: 'Snow', firstName: 'Jon', branch: 'Grand Rapids',gatheringAttd: 33, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021' },
+  { id: 10, lastName: 'Snow', firstName: 'Jon', branch: 'Grand Rapids',gatheringAttd: 66, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021' },
+  { id: 11, lastName: 'Snow', firstName: 'Jon', branch: 'Grand Rapids',gatheringAttd: 908, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021' },
+  { id: 12, lastName: 'Snow', firstName: 'Jon', branch: 'Grand Rapids',gatheringAttd: 876, impartationAttd: 50,flowPrayerAttd:50, tithers:100,  date:'03-23-2021'},
 //   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
 //   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
 //   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },

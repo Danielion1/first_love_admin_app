@@ -1,5 +1,5 @@
 import Tables from '../../component/tables/Tables'
-// import Table from '../../component/table/Table'
+import Table from '../../component/table/Table'
 import Chart from '../../component/chart/Chart'
 import Featured from '../../component/featured/Featured'
 import Navbar from '../../component/navbar/Navbar'
@@ -26,9 +26,8 @@ export default function home() {
         </div>
         <div className="listContainer">
           <div className="listTitle">Pastors and GSOs</div>
+          <Table/>
           {/* <Tables/> */}
-          {/* <Table/> */}
-          <Tables/>
           <SubmitForm/>
         </div>
       </div>
