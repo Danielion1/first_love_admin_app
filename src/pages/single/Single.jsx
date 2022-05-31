@@ -17,14 +17,14 @@ export default function Single() {
             <div className="Item">
               <img src="https://stringfixer.com/files/27176728.jpg" className='itemImg' alt="" />
               <div className="details">
-                    <h1 className="itemTitle">Dan John</h1>
+                    <h1 className="itemTitle">Dan Samuel</h1>
                     <div className="detailItem">
                       <span className="itemKey">Email:</span>
                       <span className="itemValue">danjohn@gmail.com</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Phone:</span>
-                      <span className="itemValue">+1 234 453 473</span>
+                      <span className="itemValue">+1 234 453 476</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Address:</span>
