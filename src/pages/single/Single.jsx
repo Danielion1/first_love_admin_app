@@ -4,8 +4,6 @@ import Navbar  from '../../component/navbar/Navbar'
 import Chart  from '../../component/chart/Chart'
 import Table  from '../../component/table/Table'
 
-
-
 export default function Single() {
   return (
     <div className='single'>
@@ -30,7 +28,7 @@ export default function Single() {
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Address:</span>
-                      <span className="itemValue">234 Falton dr. Holt Michigan 58334</span>
+                      <span className="itemValue">234 Faltonta dr. Holt Michigan 58334</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Country:</span>
