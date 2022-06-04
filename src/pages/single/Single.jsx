@@ -24,7 +24,7 @@ export default function Single() {
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Phone:</span>
-                      <span className="itemValue">+1 234 453 476</span>
+                      <span className="itemValue">+1 234 453 1111</span>
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Address:</span>
