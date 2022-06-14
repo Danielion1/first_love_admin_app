@@ -1,143 +1,123 @@
-// import DatePicker from "react-datepicker"
-import DatePicker from 'react-datepicker/dist/react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'
-import { ErrorSharp } from "@mui/icons-material";
-import React, {useState} from "react";
-import './submitForm.scss';
+// import DatePicker from 'react-datepicker/dist/react-datepicker';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form'
+import React, { useEffect, useState } from 'react';
+import { Button, Col, Modal, Row } from "react-bootstrap";
 
-const SubmitForm = () => {
-    const [formData, setFormData] = useState({
-        date: '',
-        gathering: '',
-        email: '',
-        profession: '',
-        citizen: false,
-        graduate: false
 
-    });
-    const[feedback, setFeedback] = useState('');
-    const[errors, setErrors] = useState({});
+function SubmitData() {
 
-    const handleChange = event =>{setFormData({
-        ...formData,
-        [event.target.name]:event.target.type ==="checkbox" ? event.target.checked :
-         event.target.value
-    })};
+  const [ViewPost, SetPostShow] = useState(false)
+  const handlePostShow = () => SetPostShow(true) 
+  const handlePostClose = () => SetPostShow(false)
 
-    const [startDate, setStartDate] = useState(new Date());
-
-  
-    const validate = formData =>{
-        const {date, email, gathering, profession, citizen, graduate} = formData;
-        const errors = {};
-
-        if(!email) errors.email ="Email cannot be blank";
-        if(!date) errors.email ="date cannot be blank";
-        if(!gathering) errors.email ="Branch cannot be blank";
-        if(!profession) errors.email ="profession cannot be blank";
-        if(!citizen) errors.email ="citizen cannot be blank";
-        if(!graduate) errors.email ="graduate cannot be blank";
-
-        return errors;
-    }
-    const handFormSubmission = event =>{
-        event.preventDefault();
-        const errors = validate(formData);
-        setErrors(errors);
-        if(Object.keys(errors).length=== 0){
-            console.log("form is now submitted");
-            console.log(formData);
-            setFormData({
-                date: '',
-                gathering:'',
-                email: '',
-                profession: '',
-                citizen: false,
-                graduate: false
-            });
-            setFeedback('You data has been submitted.');
-        }
-
-    }
   return (
-    <div className="register container">
-    <form className="card-panel" onSubmit={handFormSubmission}>
-        {Object.values(errors).map(error=>(
-            <h8 key={error} className="center red-text">{error}</h8>
-        ))}
-        <h3 className="center pink-text">Submit Service Data</h3>
-        <h2 className="center deep-purple-text">{formData.date}</h2>
-        <h2 className="center deep-purple-text">{formData.gathering}</h2>
-        <h2 className="center deep-purple-text">{formData.email}</h2>
-        <h2 className="center deep-purple-text">{feedback}</h2>
+    <div>
+      <div onClick={handlePostShow}>
+        Submit Data
+      </div>{' '}
+      <div className='modal-wrapper'>
+        <Modal
+            show={ViewPost}
+            onHide={handlePostClose}
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Add New Data</Modal.Title>
+            </Modal.Header>
 
-        <div className="field">
-            <label htmlFor="date" name="date">Date</label>
-            <DatePicker className="datepicker" selected={startDate} onChange={(date) => setStartDate(date)}/>
-        </div>
-        {/* <div className="field">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter email" value={formData.email} onChange={handleChange}/>
-        </div>
-        <div className="field">
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter password" value={formData.password} onChange={handleChange}/>
-        </div> */}
-        <div className="field">
-            <label htmlFor="gathering">Gathering Service </label>
-            <select name="gathering" id="gathering"
-            className="browser-default"
-            value={formData.gathering}
-            onChange={handleChange}
-            >
-                <option>Choose any one</option>
-                <option value="software EN">Albany</option>
-                <option value="software TM">Atlanta</option>
-                <option value="software RE">Austin</option>
-                <option value="software GJ">BAY AREA</option>
-                <option value="software TM">ATLANTA</option>
-                <option value="software RE">AUSTIN</option>
-                <option value="software GJ">BAY AREA</option>
-                <option value="software TM">ATLANTA</option>
-                <option value="software RE">AUSTIN</option>
-                <option value="software GJ">BAY AREA</option>
-            </select>
-        </div>
-        <fieldset>
-            <legend>Select your service method</legend>
-
-        <div className="field">
-            <input type="checkbox" name="citizen" className="filled-in"
-            onChange={handleChange} 
-            checked={formData.citizen}/>
-            <span>Gathering Service</span>
-        </div>
-        <div className="field">
-            <input type="checkbox" name="graduate" className="filled-in"
-            onChange={handleChange} 
-            checked={formData.graduate}/>
-            <span>Flow Prayers</span>
-        </div>
-        <div className="field">
-            <input type="checkbox" name="pra" className="filled-in"
-            onChange={handleChange} 
-            checked={formData.graduate}/>
-            <span>Flow Unity</span>
-        </div>
-        <div className="field">
-            <input type="checkbox" name="nlo" className="filled-in"
-            onChange={handleChange} 
-            checked={formData.graduate}/>
-            <span>Others</span>
-        </div>
-        </fieldset>
-        <div className="field center">
-            <button className="btn pink">Submit</button>
-
-        </div>
-    </form>
+            <Modal.Body>
+              <Form>
+              <Form.Group as={Row} className="mb-3" controlId="formHorizontalDate">
+                <Form.Label column sm={1}>
+                  Date
+                </Form.Label>
+                <Col sm={15}>
+                  <Form.Control type="date" placeholder="mm/dd/year" />
+                </Col>
+              </Form.Group>
+                <Form.Select aria-label="Default select example">
+                <option>Select Gathering Service</option>
+                  <option value="1">ALBANY GATHERING SERVICE</option>
+                  <option value="2">ATLANTA GATHERING SERVICE</option>
+                  <option value="3">AUSTIN GATHERING SERVICE</option>
+                  <option value="4">BAY AREA GATHERING SERVICE</option>
+                  <option value="5">BOSTON GATHERING SERVICE</option>
+                  <option value="6">CALGARY GATHERING SERVICE</option>
+                  <option value="7">CHATTANOOGA GATHERING SERVICE</option>
+                  <option value="8">CHICAGO CITY GATHERING SERVICE </option>
+                  <option value="9">COLUMBUS GATHERING SERVICE</option>
+                  <option value="10">CONNECTICUT GATHERING SERVICE</option>
+                  <option value="11">DALLAS GATHERING SERVICE</option>
+                  <option value="12">DC GATHERING SERVICE</option>
+                  <option value="13">GILROY GATHERING SERVICE</option>
+                  <option value="14">GREENSBORO GATHERING SERVICE</option>
+                  <option value="15">HANOVER GATHERING SERVICE</option>
+                  <option value="16">HANOVER GATHERING SERVICE</option>
+                  <option value="16">HONOLULU GATHERING SERVICE</option>
+                  <option value="17">HOUSTON GATHERING SERVICE</option>
+                  <option value="18">LAS VEGAS GATHERING SERVICE</option>
+                  <option value="19">LETHBRIDGE GATHERING SERVICE</option>
+                  <option value="20">LOS ANGELES GATHERING SERVICE</option>
+                  <option value="21">MASS CENTRAL GATHERING SERVICE</option>
+                  <option value="22">MELBOURNE GATHERING SERVICE</option>
+                  <option value="23">MEMPHIS GATHERING SERVICE</option>
+                  <option value="24">MIAMI GATHERING SERVICE</option>
+                  <option value="25">NEW JERSEY GATHERING SERVICE</option>
+                  <option value="26">NEW YORK CITY GATHERING SERVICE</option>
+                  <option value="27">OAKLAND GATHERING SERVICE</option>
+                  <option value="28">PHILADDELPHIA GATHERING SERVICE</option>
+                  <option value="29">PITTSBURGH GATHERING SERVICE</option>
+                  <option value="30">RICHMOND GATHERING SERVICE</option>
+                  <option value="31">ROLLA GATHERING SERVICE</option>
+                  <option value="32">SAN JUAN GATHERING SERVICE</option>
+                  <option value="33">SUDBURY GATHERING SERVICE</option>
+                  <option value="34">TOLEDO GATHERING SERVICE</option>
+                  <option value="35">TORONTO GATHERING SERVICE</option>
+                  <option value="36">TUCSON GATHERING SERVICE</option>
+                  <option value="37">UNIVERSITY OF MINNESOTA GATHERING SERVICE</option>
+                  <option value="38">URBANAN GATHERING SERVICE</option>
+                  <option value="39">WEST MICHIGAN GATHERING SERVICE</option>
+                </Form.Select>
+                
+                <Form.Select aria-label="Default select example">
+                  <option>Type of Service</option>
+                  <option value="1">Flow Prayers</option>
+                  <option value="2">Flow Unity</option>
+                  <option value="3">Gathering Service</option>
+                  <option value="4">Other</option>
+                </Form.Select>
+                <Form.Group className="mb-3" controlId="formZoomAttendance">
+                  <Form.Label>Zoom</Form.Label>
+                  <Form.Control type="zoom" placeholder="Please put zero if none of your members watched on zoom" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formInPersonAttendance">
+                  <Form.Label>In Person Attendance</Form.Label>
+                  <Form.Control type="inPerson" placeholder="In Person Attendance" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formNewConverts">
+                  <Form.Label>Number of New Converts</Form.Label>
+                  <Form.Control type="newConverts" placeholder="Number of New Converts" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formFirstTimers">
+                  <Form.Label>Number of First Timers</Form.Label>
+                  <Form.Control type="zoom" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formtithers">
+                  <Form.Label>Number of tithers</Form.Label>
+                  <Form.Control type="zoom" placeholder="Enter the number of people who paid tithes" />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant='secondary' onClick={handlePostClose}>Cancel</Button>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+            </Modal.Footer>
+        </Modal>
+      </div>
     </div>
-  )
+    )
 }
 
-export default SubmitForm
+export default SubmitData;

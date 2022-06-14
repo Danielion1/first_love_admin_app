@@ -28,7 +28,7 @@ export default function home() {
           <div className="listTitle">Pastors and GSOs</div>
           <Table/>
           {/* <Tables/> */}
-          <SubmitForm/>
+          {/* <SubmitForm/> */}
         </div>
       </div>
     </div>

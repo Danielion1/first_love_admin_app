@@ -7,7 +7,10 @@ import ChurchIcon from '@mui/icons-material/Church';
 import FaceIcon from '@mui/icons-material/Face';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { Link } from 'react-router-dom';
+import PublishTwoToneIcon from '@mui/icons-material/PublishTwoTone';
 import SubmitForm from '../../pages/submitForm/SubmitForm'
+
+
 export default function Sidebar() {
   return (
     <div className='sidebar'>
@@ -28,7 +31,7 @@ export default function Sidebar() {
               </Link>
 
               <Link to="/users" style={{textDecoration: "none"}}>
-              <p className='title'>List</p>
+              <p className='title'>Services</p>
               <li>
                 <GroupIcon className='icon'/>
                 <span>GSOs</span>
@@ -56,6 +59,10 @@ export default function Sidebar() {
               <li>
                 <ExitToAppIcon className='icon'/>
                 <span>Logout</span>
+              </li>
+              <li>
+                <PublishTwoToneIcon className="icon" />
+                <span><SubmitForm /></span>
               </li>
               <p className='title'>Color</p>
           </ul>
