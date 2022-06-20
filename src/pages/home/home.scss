@@ -20,12 +20,14 @@
             border-radius: 1px;
             padding: 20px;
             margin: 20px;
-        }
 
-        .listTitle{
-            font-weight: 500;
-            color:grey;
-            margin-bottom: 15px;
+            .listTitle{
+                font-weight: 500;
+                color:grey;
+                margin-bottom: 15px;
+                display: flex;
+                justify-content: space-between;
+            }
         }
 
     }
