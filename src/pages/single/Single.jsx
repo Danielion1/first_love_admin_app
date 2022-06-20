@@ -24,11 +24,8 @@ export default function Single() {
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Phone:</span>
-<<<<<<< HEAD
                       <span className="itemValue">+1 234 453 111</span>
-=======
                       <span className="itemValue">+1 234 453 1111</span>
->>>>>>> 390231d74b4439722266623a579a23fc02dee179
                     </div>
                     <div className="detailItem">
                       <span className="itemKey">Address:</span>
@@ -38,7 +35,6 @@ export default function Single() {
                       <span className="itemKey">Country:</span>
                       <span className="itemValue">USA</span>
                     </div>
-
               </div>
 
             </div>
