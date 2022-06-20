@@ -6,6 +6,8 @@ import Navbar from '../../component/navbar/Navbar'
 import Sidebar from '../../component/Sidebar/Sidebar'
 import Widget from '../../component/widget/Widget'
 import SubmitForm from '../../pages/submitForm/SubmitForm'
+import Tabs from '../../component/tabs/Tabs'
+import Button from 'react-bootstrap/Button';
 
 import './home.scss'
 export default function home() {
@@ -25,10 +27,11 @@ export default function home() {
           <Chart title ="Gathering Service Attendance" aspect={2/1}/>
         </div>
         <div className="listContainer">
-          <div className="listTitle">Pastors and GSOs</div>
-          <Table/>
-          {/* <Tables/> */}
-          <SubmitForm/>
+          <div className="listTitle">
+            <p>Pastors and GSOs</p>
+            <a><Button variant="secondary"><SubmitForm/></Button></a>
+          </div>
+          <Tabs/>
         </div>
       </div>
     </div>
