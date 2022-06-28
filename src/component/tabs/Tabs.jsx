@@ -2,7 +2,10 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-import Table from '../table/Table';
+import Table from '../table/GatheringServiceTable';
+import ImpartationServiceTable from '../table/ImpartationServiceTable';
+import FlowUnityServiceTable from '../table/FlowUnityServiceTable';
+
 
 function tabSelection () {
   return (
@@ -11,15 +14,16 @@ function tabSelection () {
       id="uncontrolled-tab-example"
       className="mb-3"
     >
-      <Tab eventKey="gathering" title="Gathering">
-        <Table name="gathering"/>
+      <Tab eventKey="gathering" title="Gathering Service">
+        <Table name="Gathering Service"/>
       </Tab>
-      <Tab eventKey="impartation" title="Impartation">
-        <Table name="impartation"/>
+      <Tab eventKey="impartation" title="Impartation Service">
+        <ImpartationServiceTable name="Impartation Service"/>
       </Tab>
-      <Tab eventKey="flowPrayer" title="Flow Prayer">
-        <Table name="flowPrayer"/>
+      <Tab eventKey="flowUnity" title="Flow Unity Service">
+        <FlowUnityServiceTable name="Flow Unity Service"/>
       </Tab>
+
     </Tabs>
   );
 }

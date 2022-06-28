@@ -1,5 +1,5 @@
-import Tables from '../../component/tables/Tables'
-import Table from '../../component/table/Table'
+//import Tables from '../../component/tables/Tables'
+//import Table from '../../component/table/Table'
 import Chart from '../../component/chart/Chart'
 import Featured from '../../component/featured/Featured'
 import Navbar from '../../component/navbar/Navbar'
