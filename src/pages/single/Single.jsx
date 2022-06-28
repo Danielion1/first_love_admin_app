@@ -2,7 +2,7 @@ import './single.scss'
 import Sidebar  from '../../component/Sidebar/Sidebar'
 import Navbar  from '../../component/navbar/Navbar'
 import Chart  from '../../component/chart/Chart'
-import Table  from '../../component/table/Table'
+import GatheringServiceTable  from '../../component/table/GatheringServiceTable'
 
 export default function Single() {
   return (
@@ -45,7 +45,7 @@ export default function Single() {
         </div>
         <div className="bottom">
           <h1 className='title'>Attendance</h1>
-          <Table/>
+          <GatheringServiceTable/>
         </div>
       </div>
     </div>
