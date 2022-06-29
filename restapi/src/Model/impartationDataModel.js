@@ -16,6 +16,18 @@ const impartationDataSchema =  new mongoose.Schema({
   zoomAttendance:{
     type:Number
   },
+
+  firstTimers:{
+    type:Number
+  },
+
+  tithers:{
+    type:Number
+  },
+
+  newConvert:{
+    type:String
+  },
   
   date:{
     type:Date,
