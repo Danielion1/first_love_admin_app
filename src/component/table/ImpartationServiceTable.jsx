@@ -7,9 +7,12 @@ const ImpartationServiceTable = () => {
   
   const colImpartation = [
     { field: 'id', headerName: 'ID', width: 80},
-    { field: 'gatheringService', headerName: 'Branch', width: 200 },
-     { field: 'typeOfService', headerName: 'Type Of Service', width: 200 },
-     {field: 'zoomAttendance', headerName: 'Zoom Attendance', type: 'number',width: 200},
+    { field: 'gatheringService', headerName: 'Branch', width: 130 },
+     { field: 'typeOfService', headerName: 'Type Of Service', width: 150 },
+     {field: 'zoomAttendance', headerName: 'Zoom', type: 'number',width: 80},
+     {field: 'firstTimers', headerName: 'First Timers', type: 'number',width: 100},
+     {field: 'tithers', headerName: 'Tithers', type: 'number',width: 80},
+     {field: 'newConvert', headerName: 'New Convert', type: 'number',width: 100},
      { field: 'date', headerName: 'Date', width: 150 }
   ]
 
@@ -49,12 +52,15 @@ const GetImpData = () => {
                gatheringService: item.gatheringService,
                typeOfService: item.typeOfService,
                zoomAttendance: item.zoomAttendance,
+               firstTimers: item.firstTimers,
+               tithers: item.tithers,
+               newConvert: item.newConvert,
                date: item.date
            }
        ))}
        
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
         checkboxSelection
       />
     </div>

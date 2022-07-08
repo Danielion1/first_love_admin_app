@@ -2,3 +2,34 @@
     font-size: 100px;
     font-weight: bold;
 }
+
+.cellAction{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .viewButton{
+        padding: 2px 5px;
+        border-radius: 5px;
+        color: rgb(43, 40, 207);
+        border: 1px solid rgb(172, 172, 189);
+        cursor: pointer;
+    }
+
+    .deleteButton{
+        padding: 2px 5px;
+        border-radius: 5px;
+        color: rgb(233, 101, 134);
+        border: 1px solid rgb(214, 36, 36);
+        cursor: pointer;
+    }
+
+    .editButton{
+        padding: 2px 5px;
+        border-radius: 5px;
+        color: rgb(43, 40, 207);
+        border: 1px solid rgb(172, 172, 189);
+        cursor: pointer;
+    }
+
+}
