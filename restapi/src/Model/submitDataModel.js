@@ -37,6 +37,9 @@ const submitDataSchema =  new mongoose.Schema({
     type:Date,
     require:true
   },
+  action:{
+    type:String,
+  },
  
 })
 

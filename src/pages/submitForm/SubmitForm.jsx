@@ -23,8 +23,18 @@ function SubmitData() {
   const handlePostShow = () => {SetPostShow(true)} 
   const handlePostClose = () => {SetPostShow(false)}
 
-  const handleSubmit = () => {
+  //FOr Edit Model
+  const [ViewEdit, SetEditShow] = useState(false)
+  const handleEditShow = () => { SetEditShow(true) }
+  const handleEditClose = () => { SetEditShow(false) }
 
+  //FOr Delete Model
+  const [ViewDelete, SetDeleteShow] = useState(false)
+  const handleDeleteShow = () => { SetDeleteShow(true) }
+  const handleDeleteClose = () => { SetDeleteShow(false) }
+
+
+  const handleSubmit = () => {
     if(typeOfService ==="Gathering Service")
     {
      setUrl('http://localhost:8000/submitData');

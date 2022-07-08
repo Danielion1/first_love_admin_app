@@ -6,10 +6,10 @@ import axios from 'axios';
 const FlowUnityServiceTable  = () => {
   
   const flowunitycolumn = [
-    { field: 'id', headerName: 'ID', width: 80},
-    { field: 'gatheringService', headerName: 'Branch', width: 200 },
-     { field: 'typeOfService', headerName: 'Type Of Service', width: 200 },
-     {field: 'zoomAttendance', headerName: 'Zoom Attendance', type: 'number',width: 200},
+    { field: 'id', headerName: 'ID', width: 60},
+    { field: 'gatheringService', headerName: 'Branch', width: 130 },
+     { field: 'typeOfService', headerName: 'Type Of Service', width: 150 },
+     {field: 'zoomAttendance', headerName: 'Zoom', type: 'number',width: 80},
      { field: 'date', headerName: 'Date', width: 150 }
   ]
 
