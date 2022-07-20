@@ -4,6 +4,8 @@ import Single from './pages/single/Single';
 import New from './pages/new/New';
 import List from './pages/list/List';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import EditForm from './pages/editForm/EditForm';
+
 
 import {
   BrowserRouter,
@@ -31,6 +33,7 @@ function App() {
             <Route path=":productId" element={<Single/>} />
             <Route path="new" element={<New inputs={productInputs} title="Add New Branch"/>} />
           </Route>
+          <Route exact path="/edit/:id" component={EditForm} />
         </Route>
       </Routes>
     </BrowserRouter>,

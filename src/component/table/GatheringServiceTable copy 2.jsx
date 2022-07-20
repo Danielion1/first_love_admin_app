@@ -4,8 +4,11 @@ import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import { Button, Modal } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form'
+import Table from 'react-bootstrap/Table';
 
+
+//import EditForm from '../../pages/editForm/EditForm';
 
 
 const GatheringServiceTable = () => {
@@ -45,6 +48,42 @@ const [RowData, SetRowData] = useState([])
        const [Delete,setDelete] = useState(false)
 
       const [id,setId] = useState("");
+
+      const [inpval, setINP] = useState({
+        gatheringService: "",
+        typeOfService: "",
+        inpersonAttendance: "",
+        zoomAttendance: "",
+        firstTimers: "",
+        tithers: "",
+        newConvert: "",
+        date:""
+    })
+
+    const setdata = (e) => {
+        console.log(e.target.value);
+        const { name, value } = e.target;
+        setINP((preval) => {
+            return {
+                ...preval,
+                [name]: value
+            }
+        })
+    }
+
+//   const colGathering = [
+//       { field: 'id', headerName: 'ID', width: 60},
+//       { field: 'gatheringService', headerName: 'Branch', width: 130},
+//        { field: 'typeOfService', headerName: 'Type Of Service', width: 150 },
+//        { field: 'inpersonAttendance', headerName: 'In Person', type: 'number', width: 80 },
+//        {field: 'zoomAttendance', headerName: 'Zoom', type: 'number',width: 80},
+//        {field: 'firstTimers', headerName: 'First Timers', type: 'number',width: 100},
+//        {field: 'tithers', headerName: 'Tithers', type: 'number',width: 80},
+//        {field: 'newConvert', headerName: 'New Convert', type: 'number',width: 100},
+//        { field: 'date', headerName: 'Date', width: 150 }
+//       // {field: 'action', headerName: 'Action', width: 200}
+//       // { field: 'action', headerName: 'Action', width: 150 }
+//   ]
 
   const GetData = async () => {
     //here we will get all pastor    data
@@ -114,10 +153,17 @@ useEffect(() => {
 
 return (
     <div>
+    {/* <div className="row">
+        <div className="mt-5 mb-4">
+        <Button variant='primary' onClick={() => {handlePostShow()}}><i className='fa fa-plu'></i>
+                Submit Data
+        </Button>
+        </div>
+    </div> */}
     
     <div className='row'>
                 <div className='table-responsive'>
-                    <table id="example" className="table table-striped table-bordered">
+                    <table className='table table-striped table-hover table-bordered'>
                         <thead>
                             <tr className="table-dark">
                                 <th>Branch</th>
@@ -146,7 +192,7 @@ return (
                                     <td>{element.newConvert}</td>
                                     <td>{element.date}</td>
 
-                                    <td style={{ minWidth: 190}}>
+                                    <td style={{ minWidth: 190 }}>
                                         <Button size='sm' variant='primary' onClick={() => handleViewShow(element._id)}>View</Button>
                                         <Button size='sm' variant='warning'onClick={()=> {handleEditShow(SetRowData(element),setId(element._id))}}>Edits</Button>
                                         <Button size='sm' variant='danger' onClick={() =>{handleViewShow(SetRowData(element),setId(element._id), setDelete(true))}}>Delete</Button>
