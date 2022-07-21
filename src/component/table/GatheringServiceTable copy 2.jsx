@@ -1,9 +1,14 @@
 import './table.scss'
 import React, { useState, useEffect } from 'react'
+import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import { Button, Modal } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import { Link, NavLink } from 'react-router-dom';
+import Form from 'react-bootstrap/Form'
+import Table from 'react-bootstrap/Table';
 
+
+//import EditForm from '../../pages/editForm/EditForm';
 
 
 const GatheringServiceTable = () => {
@@ -32,7 +37,6 @@ const [RowData, SetRowData] = useState([])
        //Define here local state that store the form Data
        const [gatheringService, setgatheringService] = useState("")
        const [typeOfService, settypeOfService] = useState("")
-       const [region, setregion] = useState("")
        const [inpersonAttendance, setinpersonAttendance] = useState("")
        const [zoomAttendance, setzoomAttendance] = useState("")
        const [firstTimers, setfirstTimers] = useState("")
@@ -44,6 +48,42 @@ const [RowData, SetRowData] = useState([])
        const [Delete,setDelete] = useState(false)
 
       const [id,setId] = useState("");
+
+      const [inpval, setINP] = useState({
+        gatheringService: "",
+        typeOfService: "",
+        inpersonAttendance: "",
+        zoomAttendance: "",
+        firstTimers: "",
+        tithers: "",
+        newConvert: "",
+        date:""
+    })
+
+    const setdata = (e) => {
+        console.log(e.target.value);
+        const { name, value } = e.target;
+        setINP((preval) => {
+            return {
+                ...preval,
+                [name]: value
+            }
+        })
+    }
+
+//   const colGathering = [
+//       { field: 'id', headerName: 'ID', width: 60},
+//       { field: 'gatheringService', headerName: 'Branch', width: 130},
+//        { field: 'typeOfService', headerName: 'Type Of Service', width: 150 },
+//        { field: 'inpersonAttendance', headerName: 'In Person', type: 'number', width: 80 },
+//        {field: 'zoomAttendance', headerName: 'Zoom', type: 'number',width: 80},
+//        {field: 'firstTimers', headerName: 'First Timers', type: 'number',width: 100},
+//        {field: 'tithers', headerName: 'Tithers', type: 'number',width: 80},
+//        {field: 'newConvert', headerName: 'New Convert', type: 'number',width: 100},
+//        { field: 'date', headerName: 'Date', width: 150 }
+//       // {field: 'action', headerName: 'Action', width: 200}
+//       // { field: 'action', headerName: 'Action', width: 150 }
+//   ]
 
   const GetData = async () => {
     //here we will get all pastor    data
@@ -67,7 +107,7 @@ const [RowData, SetRowData] = useState([])
 
 const handleEdit = async() =>{
    const url = `http://localhost:8000/submitData/${id}`
-   const Credentials = {gatheringService, typeOfService, region, inpersonAttendance, zoomAttendance, firstTimers, tithers, newConvert, date}
+   const Credentials = {gatheringService, typeOfService, inpersonAttendance, zoomAttendance, firstTimers, tithers, newConvert, date}
    //const Credentials  = {inpval}
    axios.put(url, Credentials)
        .then(response => {
@@ -113,15 +153,21 @@ useEffect(() => {
 
 return (
     <div>
+    {/* <div className="row">
+        <div className="mt-5 mb-4">
+        <Button variant='primary' onClick={() => {handlePostShow()}}><i className='fa fa-plu'></i>
+                Submit Data
+        </Button>
+        </div>
+    </div> */}
     
     <div className='row'>
                 <div className='table-responsive'>
-                    <table id="example" className="table table-striped table-bordered">
+                    <table className='table table-striped table-hover table-bordered'>
                         <thead>
                             <tr className="table-dark">
                                 <th>Branch</th>
                                 <th>Type of Service</th>
-                                <th>Region</th>
                                 <th>In Person</th>
                                 <th>Zoom</th>
                                 <th>First Timers</th>
@@ -139,7 +185,6 @@ return (
                             <tr key={element._id}>
                                     <td>{element.gatheringService}</td>
                                     <td>{element.typeOfService}</td>
-                                    <td>{element.region}</td>
                                     <td>{element.inpersonAttendance}</td>
                                     <td>{element.zoomAttendance}</td>
                                     <td>{element.firstTimers}</td>
@@ -147,8 +192,8 @@ return (
                                     <td>{element.newConvert}</td>
                                     <td>{element.date}</td>
 
-                                    <td style={{ minWidth: 190}}>
-                                        <Button size='sm' variant='primary' onClick={() => handleViewShow(SetRowData(element))}>View</Button>
+                                    <td style={{ minWidth: 190 }}>
+                                        <Button size='sm' variant='primary' onClick={() => handleViewShow(element._id)}>View</Button>
                                         <Button size='sm' variant='warning'onClick={()=> {handleEditShow(SetRowData(element),setId(element._id))}}>Edits</Button>
                                         <Button size='sm' variant='danger' onClick={() =>{handleViewShow(SetRowData(element),setId(element._id), setDelete(true))}}>Delete</Button>
                                     </td>
@@ -180,43 +225,32 @@ return (
                 <Modal.Body>
                     <div>
                         <div className='form-group'>
-                        <label>Branch</label>
                             <input type="text" className='form-control' value ={RowData.gatheringService} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
-                        <label>Type of Service</label>
                             <input type="text" className='form-control' value ={RowData.typeOfService} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
-                        <label>Region</label>
-                            <input type="text" className='form-control' value ={RowData.region} readOnly/>
-                        </div>
-                        <div className='form-group mt-3'>
-                        <label>In Person</label>
                             <input type="number" className='form-control' value ={RowData.inpersonAttendance} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                             <input type="number" className='form-control' value ={RowData.zoomAttendance} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
-                        <label>First Timer</label>
                             <input type="number" className='form-control' value ={RowData.firstTimers} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
-                        <label>Tithers</label>
                             <input type="number" className='form-control' value ={RowData.tithers} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
-                        <label>New Convert</label>
                             <input type="number" className='form-control' value ={RowData.newConvert} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
-                        <label>Date</label>
                             <input type="text" className='form-control' value ={RowData.date} readOnly/>
                         </div>
                             {
                                 Delete && (
-                                    <Button type='submit' className='btn btn-danger mt-4' onClick={handleDelete}>Delete Gathering Data</Button>
+                                    <Button type='submit' className='btn btn-danger mt-4' onClick={handleDelete}>Delete Pastor</Button>
                                 )
                             }
                     </div>
@@ -299,27 +333,14 @@ return (
                                 <option value="Flow Unity Service">Flow Unity Service</option>
                                 <option value="Flow Unity Prayer">Flow Unity Prayer</option>
                                 </Form.Select>
-                            </div>
 
-                            <div className='form-group mt-3'>
-                                <label>Region</label>
-                                <Form.Select aria-label="Default select example" onChange={(e) => setregion(e.target.value)} defaultValue={RowData.region}>
-                                <option>Select Region</option>
-                                <option value="North East">North East</option>
-                                <option value="South East">South East</option>
-                                <option value="Midwest">Midwest</option>
-                                <option value="South West">South West</option>
-                                <option value="West Coast">West Coast</option>
-                                <option value="DMV">DMV</option>
-                                <option value="Canada">Canada</option>
-                                </Form.Select>
+                                {/* <input type="text" className='form-control' onChange={(e) => settypeOfService(e.target.value)} placeholder="Select Type of Service" value={items.typeOfService} /> */}
                             </div>
-
                             <div className='form-group mt-3'>
                                 <label>In Person</label>
                                 <input type="number" className='form-control' onChange={(e) => setinpersonAttendance(e.target.value)} placeholder="Enter In Person Attendance" defaultValue={RowData.inpersonAttendance} />
+                                {/* <input type="text" value={inpval.inpersonAttendance} onChange={setdata} name="inpersonAttendance" class="form-control" id="inpersonAttendance" /> */}
                             </div>
-
                             <div className='form-group mt-3'>
                                 <label>Zoom</label>
                                 <input type="number" className='form-control' onChange={(e) => setzoomAttendance(e.target.value)} placeholder="Enter In Zoom Attendance" defaultValue={RowData.zoomAttendance}/>
@@ -342,7 +363,7 @@ return (
                             </div>
                             <div className='form-group mt-3'>
                                 <label>Date</label>
-                                <input type="date" placeholder="mm/dd/year" className='form-control' onChange={(e) => setdate(e.target.value)} defaultValue={RowData.date}/>
+                                <input type="text" className='form-control' onChange={(e) => setdate(e.target.value)} placeholder="Select Date" defaultValue={RowData.date}/>
                                 {/* <input type="text" value={inpval.date} onChange={setdata} name="date" class="form-control" id="date" /> */}
                             </div> 
                             <Button type='submit' className='btn btn-warning mt-4' onClick={handleEdit}>Submit</Button>
