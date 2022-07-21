@@ -13,6 +13,12 @@ const submitDataSchema =  new mongoose.Schema({
     require:true
   },
 
+  region:{
+    type:String,
+    require:true
+  },
+
+
   inpersonAttendance:{
     type:Number
   },

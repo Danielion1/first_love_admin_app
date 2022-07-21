@@ -10,6 +10,7 @@ import axios from 'axios';
 function SubmitData() {
   const [gatheringService, setGatheringService] = useState("")
      const [typeOfService, setTypeOfService] = useState("")
+     const [region, setregion] = useState("")
      const [inpersonAttendance, setInpersonAttendance] = useState("")
      const [zoomAttendance, setZoomAttendance] = useState("")
      const [firstTimers, setFirstTimers] = useState("")
@@ -47,7 +48,7 @@ function SubmitData() {
     else if (typeOfService ==="Flow Unity Service"){
       setUrl('http://localhost:8000/flowUnityData');
   }
-    const Credentials = { gatheringService, typeOfService, inpersonAttendance, zoomAttendance, firstTimers, tithers, newConvert, date }
+    const Credentials = { gatheringService, typeOfService, region, inpersonAttendance, zoomAttendance, firstTimers, tithers, newConvert, date }
     axios.post(url, Credentials)
         .then(response => {
             const result = response.data;
@@ -73,7 +74,7 @@ function SubmitData() {
       {/* <Button variant="primary" type="submit" onClick={() =>{handlePostShow()}}>
 Submit Data
 </Button> */}
-      <div className='modal-wrapper'>
+      <div className='model-box-view'>
         <Modal
              show={ViewPost}
              onHide={handlePostClose}
@@ -83,18 +84,17 @@ Submit Data
             <Modal.Header closeButton>
                 <Modal.Title>Add New Data</Modal.Title>
             </Modal.Header>
-
             <Modal.Body>
               <Form>
-              <Form.Group as={Row} className="mb-3" controlId="formHorizontalDate">
-                <Form.Label column sm={1}>
-                  Date
-                </Form.Label>
-                <Col sm={15}>
+
+              <Form.Group className='form-group mt-3' controlId="formHorizontalDate">
+                <Form.Label> Date</Form.Label>
                   <Form.Control type="date" placeholder="mm/dd/year" onChange={(e) => setDate(e.target.value)}/>
-                </Col>
               </Form.Group>
-                <Form.Select aria-label="Default select example" onChange={(e) => setGatheringService(e.target.value)}>
+
+              <div className='form-group'>
+              <Form.Label>Branch</Form.Label>
+                <Form.Select  aria-label="Default select example" onChange={(e) => setGatheringService(e.target.value)}>
                 <option>Select Gathering Service</option>
                   <option value="Albany">Albany</option>
                   <option value="Atlanta">Atlanta</option>
@@ -136,33 +136,55 @@ Submit Data
                   <option value="Urbana">Urbana</option>
                   <option value="West Michigan">West Michigan</option>
                 </Form.Select>
-                
-                <Form.Select aria-label="Default select example" onChange={(e) => setTypeOfService(e.target.value)}>
+                </div>
+
+                <Form.Group className='form-group mt-3' controlId="formtypeofservice">
+                <Form.Label>Type of Service</Form.Label>
+                <Form.Select  aria-label="Default select example" onChange={(e) => setTypeOfService(e.target.value)}>
                   <option>Type of Service</option>
                   <option value="Gathering Service">Gathering Service</option>
                   <option value="Impartation Service">Impartation Service</option>
                   <option value="Flow Unity Service">Flow Unity Service</option>
                   <option value="Flow Unity Prayer">Flow Unity Prayer</option>
                 </Form.Select>
-                <Form.Group className="mb-3" controlId="formZoomAttendance">
-                  <Form.Label>Zoom</Form.Label>
-                  <Form.Control type="zoom" placeholder="Please put zero if none of your members watched on zoom" onChange={(e) => setZoomAttendance(e.target.value)} />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formInPersonAttendance">
-                  <Form.Label>In Person Attendance</Form.Label>
+
+                <Form.Group className='form-group mt-3' controlId="formregion">
+                <Form.Label>Region</Form.Label>
+                <Form.Select aria-label="Default select example" onChange={(e) => setregion(e.target.value)}>
+                  <option>Select Region</option>
+                  <option value="North East">North East</option>
+                  <option value="South East">South East</option>
+                  <option value="Midwest">Midwest</option>
+                  <option value="South West">South West</option>
+                  <option value="West Coast">West Coast</option>
+                  <option value="DMV">DMV</option>
+                  <option value="Canada">Canada</option>
+                 </Form.Select>
+                 </Form.Group>
+
+                <Form.Group className='form-group mt-3' controlId="formZoomAttendance">
+                  <Form.Label>Zoom</Form.Label>
+                  <Form.Control type="zoom" placeholder="Zoom Attendance" onChange={(e) => setZoomAttendance(e.target.value)} />
+                </Form.Group>
+
+                <Form.Group className='form-group mt-3' controlId="formInPersonAttendance">
+                  <Form.Label>In Person</Form.Label>
                   <Form.Control type="inPerson" placeholder="In Person Attendance" onChange={(e) => setInpersonAttendance(e.target.value)}/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formNewConverts">
-                  <Form.Label>Number of New Converts</Form.Label>
+
+                <Form.Group className='form-group mt-3' controlId="formNewConverts">
+                  <Form.Label>New Converts</Form.Label>
                   <Form.Control type="newConverts" placeholder="Number of New Converts" onChange={(e) => setNewConvert(e.target.value)}/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formFirstTimers">
-                  <Form.Label>Number of First Timers</Form.Label>
-                  <Form.Control type="zoom" onChange={(e) => setFirstTimers(e.target.value)} />
+
+                <Form.Group className='form-group mt-3' controlId="formFirstTimers">
+                  <Form.Label>First Timers</Form.Label>
+                  <Form.Control type="zoom" placeholder="Number of First Timers"  onChange={(e) => setFirstTimers(e.target.value)} />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formtithers">
-                  <Form.Label>Number of tithers</Form.Label>
-                  <Form.Control type="zoom" placeholder="Enter the number of people who paid tithes" onChange={(e) => setTithers(e.target.value)}/>
+                <Form.Group className='form-group mt-3' controlId="formtithers">
+                  <Form.Label>Number of Tithers</Form.Label>
+                  <Form.Control type="zoom" placeholder="Number of Tithers" onChange={(e) => setTithers(e.target.value)}/>
                 </Form.Group>
               </Form>
             </Modal.Body>

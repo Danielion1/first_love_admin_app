@@ -151,23 +151,19 @@ useEffect(() => {
         checkboxSelection
       />
       <div className='model-box-view'>
-      
                 <Modal
-               
                     show={ViewEdit}
                     onHide={handleEditClose}
                     backdrop="static"
                     keyboard={false}
-                >
-                    
+                >                   
                     <Modal.Header closeButton>
                         <Modal.Title>Edit Gathering Service Data</Modal.Title>
                     </Modal.Header>
                     
                     <Modal.Body>
                     {Data.map((items) =>
-                        <div>
-                            
+                        <div>                         
                             <div className='form-group'>
                                 <label>Gathering Service</label>
                                 <input type="select" className='form-control' onChange={(e) => setgatheringService(e.target.value)} placeholder="Enter Gathering Services" defaultValue={items.gatheringService} />
@@ -211,17 +207,12 @@ useEffect(() => {
                             <Button type='submit' className='btn btn-warning mt-4' onClick={handleEdit}>Submit</Button>
 
                              </div>
-                             )}
-                       
-                       
-                    </Modal.Body>
-                    
+                             )}                     
+                    </Modal.Body>                
                     <Modal.Footer>
                         <Button variant='secondary' onClick={handleEditClose}>Close</Button>
-                    </Modal.Footer>
-                   
-                </Modal>
-            
+                    </Modal.Footer>              
+                </Modal>   
             </div>
     </div>
 
