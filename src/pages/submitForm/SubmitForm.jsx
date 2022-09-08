@@ -4,6 +4,9 @@ import Form from 'react-bootstrap/Form'
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import axios from 'axios';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
@@ -16,7 +19,7 @@ function SubmitData() {
      const [firstTimers, setFirstTimers] = useState("")
      const [tithers, setTithers] = useState("")
      const [newConvert, setNewConvert] = useState("")
-     const [date, setDate] = useState("")
+     const [date, setDate] = useState(new Date())
      const [url, setUrl] = useState("")
 
 
@@ -89,9 +92,9 @@ Submit Data
 
               <Form.Group className='form-group mt-3' controlId="formHorizontalDate">
                 <Form.Label> Date</Form.Label>
-                  <Form.Control type="date" placeholder="mm/dd/year" onChange={(e) => setDate(e.target.value)}/>
+                <DatePicker selected={date} onChange={(date) => setDate(date.toISOString().split('T')[0])} />
+                  {/* <Form.Control type="date" placeholder="mm/dd/year" onChange={(e) => setDate(e.target.value)}/> */}
               </Form.Group>
-
               <div className='form-group'>
               <Form.Label>Branch</Form.Label>
                 <Form.Select  aria-label="Default select example" onChange={(e) => setGatheringService(e.target.value)}>

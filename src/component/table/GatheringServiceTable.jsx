@@ -3,6 +3,12 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Button, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+//import { format } from 'date-fns'
+//import * as moment from 'moment'
+
+
 
 
 
@@ -11,6 +17,7 @@ const GatheringServiceTable = () => {
 const [RowData, SetRowData] = useState([])
  const [ViewShow, SetViewShow] =  useState(false)
  const [Data, setData] = useState([]);
+ //const [startDate, setStartDate] = useState(new Date());
 
  //view Model
  const handleViewShow = () => {SetViewShow(true)}
@@ -45,7 +52,7 @@ const [RowData, SetRowData] = useState([])
 
       const [id,setId] = useState("");
 
-  const GetData = async () => {
+  const GetData = () => {
     //here we will get all pastor    data
     const url = `http://localhost:8000/submitData`
     axios.get(url)
@@ -65,10 +72,10 @@ const [RowData, SetRowData] = useState([])
         })
 }
 
-const handleEdit = async() =>{
+const handleEdit = async(e) =>{
+    e.preventDefault();
    const url = `http://localhost:8000/submitData/${id}`
-   const Credentials = {gatheringService, typeOfService, region, inpersonAttendance, zoomAttendance, firstTimers, tithers, newConvert, date}
-   //const Credentials  = {inpval}
+    const Credentials = {gatheringService, typeOfService, region, inpersonAttendance, zoomAttendance, firstTimers, tithers, newConvert, date}
    axios.put(url, Credentials)
        .then(response => {
            const result = response.data;
@@ -86,7 +93,7 @@ const handleEdit = async() =>{
        })
 }
 
-const handleDelete = () =>{
+const handleDelete = async () =>{
     const url = `http://localhost:8000/submitData/${id}`
     axios.delete(url)
         .then(response => {
@@ -110,13 +117,11 @@ useEffect(() => {
     GetData();
    }, [])
   
-
 return (
     <div>
-    
     <div className='row'>
                 <div className='table-responsive'>
-                    <table id="example" className="table table-striped table-bordered">
+                    <table id="serviceTable" className="table table-striped table-bordered">
                         <thead>
                             <tr className="table-dark">
                                 <th>Branch</th>
@@ -135,8 +140,8 @@ return (
                 {
                     Data.map((element) => 
                         //return (
-                            
                             <tr key={element._id}>
+                                
                                     <td>{element.gatheringService}</td>
                                     <td>{element.typeOfService}</td>
                                     <td>{element.region}</td>
@@ -181,38 +186,40 @@ return (
                     <div>
                         <div className='form-group'>
                         <label>Branch</label>
-                            <input type="text" className='form-control' value ={RowData.gatheringService} readOnly/>
+                            <input type="text" className='form-control' defaultValue ={RowData.gatheringService} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                         <label>Type of Service</label>
-                            <input type="text" className='form-control' value ={RowData.typeOfService} readOnly/>
+                            <input type="text" className='form-control' defaultValue ={RowData.typeOfService} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                         <label>Region</label>
-                            <input type="text" className='form-control' value ={RowData.region} readOnly/>
+                            <input type="text" className='form-control' defaultValue ={RowData.region} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                         <label>In Person</label>
-                            <input type="number" className='form-control' value ={RowData.inpersonAttendance} readOnly/>
+                            <input type="number" className='form-control' defaultValue ={RowData.inpersonAttendance} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
-                            <input type="number" className='form-control' value ={RowData.zoomAttendance} readOnly/>
+                            <input type="number" className='form-control' defaultValue ={RowData.zoomAttendance} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                         <label>First Timer</label>
-                            <input type="number" className='form-control' value ={RowData.firstTimers} readOnly/>
+                            <input type="number" className='form-control' defaultValue ={RowData.firstTimers} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                         <label>Tithers</label>
-                            <input type="number" className='form-control' value ={RowData.tithers} readOnly/>
+                            <input type="number" className='form-control' defaultValue ={RowData.tithers} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                         <label>New Convert</label>
-                            <input type="number" className='form-control' value ={RowData.newConvert} readOnly/>
+                            <input type="number" className='form-control' defaultValue ={RowData.newConvert} readOnly/>
                         </div>
                         <div className='form-group mt-3'>
                         <label>Date</label>
-                            <input type="text" className='form-control' value ={RowData.date} readOnly/>
+                           
+                            <input type="date" className='form-control' defaultValue ={RowData.date}
+                             readOnly/>
                         </div>
                             {
                                 Delete && (
@@ -239,13 +246,12 @@ return (
                         <Modal.Title>Edit Gathering Service Data</Modal.Title>
                     </Modal.Header>                 
                     <Modal.Body>
-
                         <div>
                             
-                            <div className='form-group'>
-                                <label>Gathering Service</label>
-                                {/* <input type="select" className='form-control' onChange={(e) => setgatheringService(e.target.value)} placeholder="Enter Gathering Services" defaultValue={RowData.gatheringService} /> */}
-                        <Form.Select aria-label="Default select example" onChange={(e) => setgatheringService(e.target.value)} placeholder="Enter Gathering Services" defaultValue={RowData.gatheringService}>
+                    <div className='form-group'>
+                   
+                        <label>Gathering Service</label>
+                        <Form.Select aria-label="Default select example" onChange={(e) => setgatheringService(e.target.value)} defaultValue={RowData.gatheringService} key={RowData.gatheringService}  id= "gatheringService" placeholder="Enter Gathering Services">
                                 <option>Select Gathering Service</option>
                                 <option value="Albany">Albany</option>
                                 <option value="Atlanta">Atlanta</option>
@@ -287,13 +293,12 @@ return (
                                 <option value="Urbana">Urbana</option>
                                 <option value="West Michigan">West Michigan</option>
                 </Form.Select>
-                                
+                           {/* ))}       */}
                             </div>
                              <div className='form-group mt-3'>
                                 <label>Type of Service</label>
                                 <Form.Select aria-label="Default select example" onChange={(e) => settypeOfService(e.target.value)} defaultValue={RowData.typeOfService}>
-                                {/* <option>Type of Service</option> */}
-                                <option value="Gathering Service">Select Service</option>
+                                <option>Select Service</option>
                                 <option value="Gathering Service">Gathering Service</option>
                                 <option value="Impartation Service">Impartation Service</option>
                                 <option value="Flow Unity Service">Flow Unity Service</option>
@@ -317,33 +322,33 @@ return (
 
                             <div className='form-group mt-3'>
                                 <label>In Person</label>
-                                <input type="number" className='form-control' onChange={(e) => setinpersonAttendance(e.target.value)} placeholder="Enter In Person Attendance" defaultValue={RowData.inpersonAttendance} />
+                                <input type="number" className='form-control' onChange={(e) => setinpersonAttendance(e.target.value)} placeholder="Enter In Person Attendance" defaultValue={RowData.inpersonAttendance} key={RowData.inpersonAttendance}></input>
                             </div>
 
                             <div className='form-group mt-3'>
                                 <label>Zoom</label>
                                 <input type="number" className='form-control' onChange={(e) => setzoomAttendance(e.target.value)} placeholder="Enter In Zoom Attendance" defaultValue={RowData.zoomAttendance}/>
-                                {/* <input type="text" value={inpval.zoomAttendance} onChange={setdata} name="zoomAttendance" class="form-control" id="zoomAttendance" /> */}
+        
                             </div>
                             <div className='form-group mt-3'>
                                 <label>First Timers</label>
                                 <input type="number" className='form-control' onChange={(e) => setfirstTimers(e.target.value)} placeholder="Enter Timers Attendance" defaultValue={RowData.firstTimers}/>
-                                {/* <input type="text" value={inpval.firstTimers} onChange={setdata} name="firstTimers" class="form-control" id="firstTimers" /> */}
+                                
                             </div>
                             <div className='form-group mt-3'>
                                 <label>Tithers</label>
                                 <input type="number" className='form-control' onChange={(e) => settithers(e.target.value)} placeholder="Enter Number of Tithers" defaultValue={RowData.tithers}/>
-                                {/* <input type="text" value={inpval.tithers} onChange={setdata} name="tithers" class="form-control" id="tithers" /> */}
+
                             </div>
                             <div className='form-group mt-3'>
                                 <label>New Convert</label>
                                 <input type="number" className='form-control' onChange={(e) => setnewConvert(e.target.value)} placeholder="Enter New Convert" defaultValue={RowData.newConvert}/>
-                                {/* <input type="text" value={inpval.newConvert} onChange={setdata} name="newConvert" class="form-control" id="newConvert" /> */}
+
                             </div>
                             <div className='form-group mt-3'>
                                 <label>Date</label>
-                                <input type="date" placeholder="mm/dd/year" className='form-control' onChange={(e) => setdate(e.target.value)} defaultValue={RowData.date}/>
-                                {/* <input type="text" value={inpval.date} onChange={setdata} name="date" class="form-control" id="date" /> */}
+                                <Form.Control type="date" placeholder="mm/dd/year" className='form-control' onChange={(e) => setdate(e.target.value)} defaultValue={RowData.date}/>
+
                             </div> 
                             <Button type='submit' className='btn btn-warning mt-4' onClick={handleEdit}>Submit</Button>
 

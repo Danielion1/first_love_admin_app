@@ -166,7 +166,7 @@ useEffect(() => {
                         <div>                         
                             <div className='form-group'>
                                 <label>Gathering Service</label>
-                                <input type="select" className='form-control' onChange={(e) => setgatheringService(e.target.value)} placeholder="Enter Gathering Services" defaultValue={items.gatheringService} />
+                                <input type="select" className='form-control' onChange={(e) => setgatheringService(e.target.value)} placeholder="Enter Gathering Services" value={items.gatheringService} />
                             </div>
                              <div className='form-group mt-3'>
                                 <label>Type of Service</label>
@@ -186,23 +186,23 @@ useEffect(() => {
                             </div>
                             <div className='form-group mt-3'>
                                 <label>Zoom</label>
-                                <input type="number" className='form-control' onChange={(e) => setzoomAttendance(e.target.value)} placeholder="Enter In Zoom Attendance" defaultValue={items.zoomAttendance}/>
+                                <input type="number" className='form-control' onChange={(e) => setzoomAttendance(e.target.value)} placeholder="Enter In Zoom Attendance" value={items.zoomAttendance}/>
                             </div>
                             <div className='form-group mt-3'>
                                 <label>First Timers</label>
-                                <input type="number" className='form-control' onChange={(e) => setfirstTimers(e.target.value)} placeholder="Enter Timers Attendance" defaultValue={items.firstTimers}/>
+                                <input type="number" className='form-control' onChange={(e) => setfirstTimers(e.target.value)} placeholder="Enter Timers Attendance" value={items.firstTimers}/>
                             </div>
                             <div className='form-group mt-3'>
                                 <label>Tithers</label>
-                                <input type="number" className='form-control' onChange={(e) => settithers(e.target.value)} placeholder="Enter Number of Tithers" defaultValue={items.tithers}/>
+                                <input type="number" className='form-control' onChange={(e) => settithers(e.target.value)} placeholder="Enter Number of Tithers" value={items.tithers}/>
                             </div>
                             <div className='form-group mt-3'>
                                 <label>New Convert</label>
-                                <input type="number" className='form-control' onChange={(e) => setnewConvert(e.target.value)} placeholder="Enter New Convert" defaultValue={items.newConvert}/>
+                                <input type="number" className='form-control' onChange={(e) => setnewConvert(e.target.value)} placeholder="Enter New Convert" value={items.newConvert}/>
                             </div>
                             <div className='form-group mt-3'>
                                 <label>Date</label>
-                                <input type="select" className='form-control' onChange={(e) => setdate(e.target.value)} placeholder="Select Date" defaultValue={items.date}/>
+                                <input type="date" className='form-control' onChange={(e) => setdate(e.target.value)} placeholder="Select Date" value={items.date}/>
                             </div> 
                             <Button type='submit' className='btn btn-warning mt-4' onClick={handleEdit}>Submit</Button>
 
