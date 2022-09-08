@@ -13,6 +13,11 @@ const impartationDataSchema =  new mongoose.Schema({
     require:true
   },
 
+  region:{
+    type:String,
+    require:true
+  },
+
   zoomAttendance:{
     type:Number
   },

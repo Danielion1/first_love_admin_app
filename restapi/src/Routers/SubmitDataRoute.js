@@ -211,4 +211,53 @@ router.delete("/submitData/:id", async(req,res)=>{
     }
 
 })
+
+
+router.put("/impartationData/:id", async(req,res)=>{
+    try {
+        const impt_id =req.params.id;
+        const result = await impartationDataModel.findByIdAndUpdate(impt_id, req.body,{new:true});
+        if(!result){
+            res.json({
+                status:"FAILED",
+                message:"Record not updated successfully .."
+            })
+        }
+        else{
+            res.json({
+                status:"SUCCESS",
+                message:"Records was successfully updated",
+                data:result
+            })
+        }
+    } catch (e) {
+        console.log(e)  
+        res.send(e)    
+    }
+})
+
+router.delete("/impartationData/:id", async(req,res)=>{
+    try {
+        const impt_id =req.params.id;
+        const result = await impartationDataModel.findByIdAndDelete(impt_id)
+        if(!result){
+            res.json({
+                status:"FAILED",
+                message:"Record not deleted...."
+            })
+        }
+        else{
+            res.json({
+                status:"SUCCESS",
+                message:"Records successfully deleted...",
+                data:result
+            })
+        }
+    } catch (e) {
+        console.log(e)  
+        res.send(e)    
+    }
+
+})
+
 module.exports = router

@@ -29,7 +29,7 @@ export default function home() {
         <div className="listContainer">
           <div className="listTitle">
             <p>Pastors and GSOs</p>
-            <a><Button variant="secondary"><SubmitForm/></Button></a>
+            <Button variant="secondary"><SubmitForm/></Button>
           </div>
           <Tabs/>
         </div>
