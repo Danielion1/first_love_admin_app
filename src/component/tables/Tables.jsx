@@ -18,7 +18,7 @@ const List = () => {
       Branch: "Grand Rapids",
       GatheringAttd: 1000,
       ImpartationAttd: 45,
-      FlowPrayerAttd: 50,
+      FlowPrayerAttd: 100,
       Tither: 50,
       Date:"03/30/2022",
     },
