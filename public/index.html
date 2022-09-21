@@ -11,11 +11,14 @@
 
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
     <link rel="stylesheet" href="boot.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
 
     <style>*{
       font-family: 'Nunito', sans-serif;
@@ -25,15 +28,28 @@
  
     <title>FLC Admin</title>
   </head>
+ 
   <body>
-    <script>
+    <script type = "text/javascript">
       $(document).ready(function () {
-        $('#serviceTable').DataTable();
-      });
-    </script>
+
+        // $('#ImpartationTable').DataTable();
+        // $('#gatheringTable').DataTable(); 
+      //});
+//       $('#impartationTable').dataTable( {
+//     paging: true,
+//     searching: true
+// } );
+$('#gatheringTable').dataTable( {
+    paging: true,
+    searching: false
+} );
+});
+       
+      
+    </script>   
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
- 
   </body>
+  
 </html>

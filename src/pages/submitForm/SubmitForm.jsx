@@ -1,11 +1,8 @@
-// import DatePicker from 'react-datepicker/dist/react-datepicker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form'
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Modal, Row } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import axios from 'axios';
-import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -92,8 +89,8 @@ Submit Data
 
               <Form.Group className='form-group mt-3' controlId="formHorizontalDate">
                 <Form.Label> Date</Form.Label>
-                <DatePicker selected={date} onChange={(date) => setDate(date.toISOString().split('T')[0])} />
-                  {/* <Form.Control type="date" placeholder="mm/dd/year" onChange={(e) => setDate(e.target.value)}/> */}
+                {/* <DatePicker selected={date} onChange={(date) => setDate(date.toISOString().split('T')[0])} /> */}
+               <Form.Control type="date" placeholder="mm/dd/year" onChange={(e) => setDate(e.target.value)}/> 
               </Form.Group>
               <div className='form-group'>
               <Form.Label>Branch</Form.Label>
