@@ -3,11 +3,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Button, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-
-
-
-
-
 const ImpartationServiceTable = () => {
 
 const [RowData, SetRowData] = useState([])
@@ -54,7 +49,7 @@ const [RowData, SetRowData] = useState([])
                 alert(message, status)
             }
             else {
-                setData(data)
+                setData(data);              
                 console.log(data)
             }
         })
@@ -103,16 +98,37 @@ const handleDelete = async () =>{
         })
 }
 
+  const [value, setValue] = useState('');
+  const [datasource, setDatasource] = useState(Data);
+  const [tableFilter, setTableFilter] = useState([]);
+
+
+  const filterData = (e)=>{
+    if(e.target.value !== ""){
+        setValue(e.target.value);
+        const filterTable = Data.filter(o=>Object.keys(o).some(k=>String(o[k]).toLowerCase().includes(e.target.value.toLowerCase())));
+        setTableFilter([...filterTable])
+    }else{
+      setValue(e.target.value);
+      setDatasource([...Data])
+    }
+  }
 
 useEffect(() => {
     GetData();
    }, [])
+
   
 return (
     <div>
-    <div className='row'>
-                <div className='table-responsive'>
-                    <table id="serviceTable" className="table table-striped table-bordered">
+    <div className='row' >
+            <div className='table-responsive'>
+                <div class="input-group flex-nowrap">
+                <span class="input-group-text">Search</span>
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="addon-wrapping" value={value} 
+                    onChange ={filterData}/>
+                 </div>
+                    <table id="impartationTable" className="table table-striped table-bordered">
                         <thead>
                             <tr className="table-dark">
                                 <th>Branch</th>
@@ -126,30 +142,53 @@ return (
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        
             <tbody>
                 {
-                    Data.map((element) => 
-                        //return (
-                            <tr key={element._id}>
-                                
-                                    <td>{element.gatheringService}</td>
-                                    <td>{element.typeOfService}</td>
-                                    <td>{element.region}</td>
-                                    <td>{element.zoomAttendance}</td>
-                                    <td>{element.firstTimers}</td>
-                                    <td>{element.tithers}</td>
-                                    <td>{element.newConvert}</td>
-                                    <td>{element.date}</td>
+                   value.length > 0 ? tableFilter.map((impData) =>{
+                    return(
+                         <tr key={impData._id}>
+                            <td>{impData.gatheringService}</td>
+                            <td>{impData.typeOfService}</td>
+                            <td>{impData.region}</td>   
+                            <td>{impData.zoomAttendance}</td>
+                            <td>{impData.firstTimers}</td>
+                            <td>{impData.tithers}</td>
+                            <td>{impData.newConvert}</td> 
+                            <td>{impData.date}</td>
 
-                                    <td style={{ minWidth: 190}}>
-                                        <Button size='sm' variant='primary' onClick={() => handleViewShow(SetRowData(element))}>View</Button>
-                                        <Button size='sm' variant='warning'onClick={()=> {handleEditShow(SetRowData(element),setId(element._id))}}>Edits</Button>
-                                        <Button size='sm' variant='danger' onClick={() =>{handleViewShow(SetRowData(element),setId(element._id), setDelete(true))}}>Delete</Button>
+                            <td style={{ minWidth: 190}}>
+                                        <Button size='sm' variant='primary' onClick={() => handleViewShow(SetRowData(impData))}>View</Button>
+                                        <Button size='sm' variant='warning'onClick={()=> {handleEditShow(SetRowData(impData),setId(impData._id))}}>Edits</Button>
+                                        <Button size='sm' variant='danger' onClick={() =>{handleViewShow(SetRowData(impData),setId(impData._id), setDelete(true))}}>Delete</Button>
                                     </td>
-                                    </tr>
+                            
+                        </tr>
+                        )
+                       })
+                      :
+                      Data.map((impData) => {       
+                        return ( 
+                            <tr key={impData._id}>
+                                    <td>{impData.gatheringService}</td>
+                                    <td>{impData.typeOfService}</td>
+                                    <td>{impData.region}</td>
+                                    <td>{impData.zoomAttendance}</td>
+                                    <td>{impData.firstTimers}</td>
+                                    <td>{impData.tithers}</td>
+                                    <td>{impData.newConvert}</td>
+                                    <td>{impData.date}</td>
+                                    
+                                    <td style={{ minWidth: 190}}>
+                                        <Button size='sm' variant='primary' onClick={() => handleViewShow(SetRowData(impData))}>View</Button>
+                                        <Button size='sm' variant='warning'onClick={()=> {handleEditShow(SetRowData(impData),setId(impData._id))}}>Edits</Button>
+                                        <Button size='sm' variant='danger' onClick={() =>{handleViewShow(SetRowData(impData),setId(impData._id), setDelete(true))}}>Delete</Button>
+                                    </td>
 
-                        //)
+                            </tr>
+                    )}
                     )
+                        
                 }
             </tbody>
         </table>
@@ -342,8 +381,7 @@ return (
             
             </div>
 
-            </div>
-            
+            </div>        
 );
 
   };

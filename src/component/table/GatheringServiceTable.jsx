@@ -121,7 +121,7 @@ return (
     <div>
     <div className='row'>
                 <div className='table-responsive'>
-                    <table id="serviceTable" className="table table-striped table-bordered">
+                    <table id="gatheringTable" className="table table-striped table-bordered">
                         <thead>
                             <tr className="table-dark">
                                 <th>Branch</th>
