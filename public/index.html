@@ -32,20 +32,23 @@
   <body>
     <script type = "text/javascript">
       $(document).ready(function () {
-
-        // $('#ImpartationTable').DataTable();
-        // $('#gatheringTable').DataTable(); 
-      //});
-//       $('#impartationTable').dataTable( {
-//     paging: true,
-//     searching: true
-// } );
-$('#gatheringTable').dataTable( {
-    paging: true,
-    searching: false
-} );
+          $('#gatheringTable').dataTable( {
+              paging: true,
+              searching: true
+          } );
 });
        
+// table = $('#gatheringTable').DataTable( {
+//   paging: true,
+//     searching: false
+// } );
+ 
+// table.destroy();
+ 
+// table = $('#impartationTable').DataTable( {
+//   paging: true,
+//     searching: false
+// } );
       
     </script>   
     <noscript>You need to enable JavaScript to run this app.</noscript>

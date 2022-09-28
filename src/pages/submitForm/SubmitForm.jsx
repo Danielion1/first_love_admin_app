@@ -163,14 +163,14 @@ Submit Data
                  </Form.Select>
                  </Form.Group>
 
+                 <Form.Group className='form-group mt-3' controlId="formInPersonAttendance">
+                  <Form.Label>In Person</Form.Label>
+                  <Form.Control type="inPerson" placeholder="In Person Attendance" onChange={(e) => setInpersonAttendance(e.target.value)}/>
+                </Form.Group>
+
                 <Form.Group className='form-group mt-3' controlId="formZoomAttendance">
                   <Form.Label>Zoom</Form.Label>
                   <Form.Control type="zoom" placeholder="Zoom Attendance" onChange={(e) => setZoomAttendance(e.target.value)} />
-                </Form.Group>
-
-                <Form.Group className='form-group mt-3' controlId="formInPersonAttendance">
-                  <Form.Label>In Person</Form.Label>
-                  <Form.Control type="inPerson" placeholder="In Person Attendance" onChange={(e) => setInpersonAttendance(e.target.value)}/>
                 </Form.Group>
 
                 <Form.Group className='form-group mt-3' controlId="formNewConverts">
