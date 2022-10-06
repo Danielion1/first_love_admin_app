@@ -24,7 +24,7 @@ export default function home() {
         </div>
         <div className="charts">
           <Featured/>
-          <Chart title ="Gathering Service Attendance" aspect={2/1}/>
+          <Chart title ="Gathering Service Monthly Attendance" aspect={2/1}/>
         </div>
         <div className="listContainer">
           <div className="listTitle">

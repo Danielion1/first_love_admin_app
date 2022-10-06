@@ -3,14 +3,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Button, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-//import { format } from 'date-fns'
-//import * as moment from 'moment'
-
-
-
-
+import Moment from 'moment';
 
 const GatheringServiceTable = () => {
 
@@ -35,6 +28,7 @@ const [RowData, SetRowData] = useState([])
   const handlePostShow = () => { SetPostShow(true) }
   const handlePostClose = () => { SetPostShow(false) }
 
+  
 
        //Define here local state that store the form Data
        const [gatheringService, setgatheringService] = useState("")
@@ -51,6 +45,9 @@ const [RowData, SetRowData] = useState([])
        const [Delete,setDelete] = useState(false)
 
       const [id,setId] = useState("");
+
+      const formatDate = Moment().format('DD-MM-YYYY')
+
 
   const GetData = () => {
     //here we will get all pastor    data
@@ -150,7 +147,8 @@ return (
                                     <td>{element.firstTimers}</td>
                                     <td>{element.tithers}</td>
                                     <td>{element.newConvert}</td>
-                                    <td>{element.date}</td>
+                                    <td>{Moment(element.date).format('MMM-DD-YYYY')
+}</td>
 
                                     <td style={{ minWidth: 190}}>
                                         <Button size='sm' variant='primary' onClick={() => handleViewShow(SetRowData(element))}>View</Button>

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Button, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
+import Moment from 'moment';
+
 const ImpartationServiceTable = () => {
 
 const [RowData, SetRowData] = useState([])
@@ -155,7 +157,7 @@ return (
                             <td>{impData.firstTimers}</td>
                             <td>{impData.tithers}</td>
                             <td>{impData.newConvert}</td> 
-                            <td>{impData.date}</td>
+                            <td>{Moment(impData.date).format('MMM/DD/YYYY')}</td>
 
                             <td style={{ minWidth: 190}}>
                                         <Button size='sm' variant='primary' onClick={() => handleViewShow(SetRowData(impData))}>View</Button>
